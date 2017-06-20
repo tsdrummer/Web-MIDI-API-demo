@@ -1,0 +1,14 @@
+.pad {
+    height: 130px;
+    width: 130px;
+    border-radius: 1.5rem;
+    margin: 15px;
+    padding: 5px;
+    float: left;
+    transition: background 0.5s ease;
+    background-image: linear-gradient( 135deg, #ABDCFF 0%, #0396FF 100%);
+}
+
+.pad.active {
+    background-color: black;
+}

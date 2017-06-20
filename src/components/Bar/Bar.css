@@ -1,0 +1,21 @@
+:root {
+    --bar-height: 100px;
+}
+
+
+.bar {
+
+    /*height: var(--bar-height);*/
+
+    transition: height 0.544s cubic-bezier(0.68, -0.55, 0.265, 1.55);  /* avoid animating 'height'. */
+    width: 100px;
+    padding: 50px 5px;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+    margin: 15px;
+    float: left;
+}

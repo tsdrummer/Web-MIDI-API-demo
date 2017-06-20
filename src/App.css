@@ -1,0 +1,17 @@
+:root {
+    --r: 255;
+    --g: 255;
+    --b: 255;
+    --bgcolor: rgb(var(--r), var(--g), var(--b));
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: var(--bgcolor);
+}
+
+.App {
+    padding: 2rem;
+}
