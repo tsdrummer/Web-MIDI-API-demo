@@ -11,4 +11,5 @@
 
 .pad.active {
     background-color: black;
+    background-image: none;
 }
