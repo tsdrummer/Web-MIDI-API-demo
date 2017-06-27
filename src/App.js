@@ -12,7 +12,8 @@ import {
     playDj,
     playLoop,
     setRoomSize,
-    setDampening
+    setDampening,
+    setLowpass,
 } from './Sound.js'
 
 class App extends PureComponent {
@@ -24,6 +25,7 @@ class App extends PureComponent {
         pad1: false,
         pad2: false,
         pad3: false,
+        charValue: 0,
     }
 
     componentDidMount() {
@@ -50,6 +52,13 @@ class App extends PureComponent {
                 this.setState({
                     bar3Height: data.velocity,
                 })
+                setLowpass(data.velocity)
+                break;
+
+            case 4:
+                this.setState({
+                    charValue: data.velocity,
+                })
                 break;
 
             case 5:
@@ -61,8 +70,11 @@ class App extends PureComponent {
             case 7:
                 document.documentElement.style.setProperty('--b', Math.round(data.velocity / 127 * 255));
                 break;
+            case 8:
+                document.documentElement.style.setProperty('--fsize', `${data.velocity/2}rem`);
+                break;
 
-            case 36:
+             case 36:
                 this.setState({
                     pad1: data.cmd === 144,
                 })
@@ -96,12 +108,16 @@ class App extends PureComponent {
 
     render() {
 
-        const { bar1Height, bar2Height, bar3Height, pad1, pad2, pad3 } = this.state
+        const { charValue, bar1Height, bar2Height, bar3Height, pad1, pad2, pad3 } = this.state
 
         return (
             <div className="App">
 
-                <MC cb={this.barCallback}/>
+                <MC cb={this.barCallback} />
+
+                <h1>
+                    <span role="img">🍒</span> Web MIDI API Playground <span>{String.fromCodePoint(charValue + 128500)}</span>
+                </h1>
 
                 <Pad status={pad1}/>
                 <Pad status={pad2}/>
@@ -113,7 +129,6 @@ class App extends PureComponent {
             </div>
         );
     }
-
 }
 
 export default App;

@@ -3,6 +3,7 @@
     --g: 255;
     --b: 255;
     --bgcolor: rgb(var(--r), var(--g), var(--b));
+    --fsize: 0rem;
 }
 
 body {
@@ -14,4 +15,9 @@ body {
 
 .App {
     padding: 2rem;
+}
+
+h1 {
+    transition: font-size 150ms;
+    font-size: var(--fsize)
 }

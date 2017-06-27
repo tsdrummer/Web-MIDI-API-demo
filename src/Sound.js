@@ -18,10 +18,11 @@ const sounds = Array.from({
 
 const freeverb = new Tone.Freeverb(0.22, 5000).toMaster();
 const dist = new Tone.Distortion(0.22).toMaster()
+const lowpass = new Tone.Filter(200, 'lowpass', -12);
 
 export const loadAll = () => load(files).then(buffer =>
     sounds.map((item, index) =>
-        sounds[index] = new Tone.Player(buffer[index]).chain(freeverb, dist)))
+        sounds[index] = new Tone.Player(buffer[index]).chain(lowpass, freeverb, dist)))
 
 export const playKick = () => sounds[0].start()
 export const playClap = () => sounds[1].start()
@@ -39,5 +40,11 @@ export const setRoomSize = newRev => {
 export const setDampening = distortion => {
     dist.set({
         distortion: (distortion / 127) * 3,
+    })
+}
+
+export const setLowpass = freq => {
+    lowpass.set({
+        frequency: (freq * 50)
     })
 }
