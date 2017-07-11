@@ -3,6 +3,8 @@ Web MIDI API playground 🍒
 
 This small Javascript project should only show how easy it is to use the native `Web MIDI API` and an external MIDI device to have some fun. It's built within one day.
 
+![Change values with MIDI keyboard](./midi.gif)
+
 e.g. three MIDI control dials and CSS-Variables used to change the background color with `rgb()`.
 
 **CSS:**
